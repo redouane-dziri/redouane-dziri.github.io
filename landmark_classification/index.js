@@ -1,12 +1,12 @@
 
 CLASSES = {
-  0: 'alma',
-  1: 'pan',
-  2: 'penseur',
+  0: 'class0',
+  1: 'class1',
+  2: 'class2',
 };
 
 const MODEL_PATH =
-    'model_js/model.json';
+    'model.json';
 
 const IMAGE_SIZE = 192;
 const TOPK_PREDICTIONS = 3;
@@ -25,14 +25,14 @@ const demo = async () => {
   status('');
 
   // Make a prediction through the locally hosted alma_mater.jpg.
-  const almaElement = document.getElementById('alma_mater');
-  if (almaElement.complete && almaElement.naturalHeight !== 0) {
-    predict(almaElement);
-    almaElement.style.display = '';
+  const catElement = document.getElementById('almamater');
+  if (catElement.complete && catElement.naturalHeight !== 0) {
+    predict(catElement);
+    catElement.style.display = '';
   } else {
-    almaElement.onload = () => {
-      predict(almaElement);
-      almaElement.style.display = '';
+    catElement.onload = () => {
+      predict(catElement);
+      catElement.style.display = '';
     }
   }
 
@@ -56,9 +56,6 @@ async function predict(imgElement) {
     // tf.browser.fromPixels() returns a Tensor from an image element.
     const img = tf.browser.fromPixels(imgElement).toFloat();
 
-    // const offset = tf.scalar(127.5);
-    // Normalize the image from [0, 255] to [-1, 1].
-    // const normalized = img.sub(offset).div(offset);
     const normalized = img.div(255.0);
 
     // Reshape to a single-element batch so we can pass it to predict.
