@@ -1,8 +1,8 @@
 
 CLASSES = {
-  0: 'alma',
-  1: 'pan',
-  2: 'penseur',
+  0: 'class1',
+  1: 'class2',
+  2: 'class0',
 };
 
 const MODEL_PATH =
