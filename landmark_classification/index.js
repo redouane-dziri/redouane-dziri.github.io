@@ -24,7 +24,7 @@ const demo = async () => {
 
   status('');
 
-  // Make a prediction through the locally hosted alma_mater.jpg.
+  // Make a prediction through the locally hosted cat.jpg.
   const catElement = document.getElementById('almamater');
   if (catElement.complete && catElement.naturalHeight !== 0) {
     predict(catElement);
@@ -56,6 +56,9 @@ async function predict(imgElement) {
     // tf.browser.fromPixels() returns a Tensor from an image element.
     const img = tf.browser.fromPixels(imgElement).toFloat();
 
+    // const offset = tf.scalar(127.5);
+    // Normalize the image from [0, 255] to [-1, 1].
+    // const normalized = img.sub(offset).div(offset);
     const normalized = img.div(255.0);
 
     // Reshape to a single-element batch so we can pass it to predict.
