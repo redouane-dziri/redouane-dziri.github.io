@@ -88,6 +88,7 @@ async function predict(imgElement) {
  */
 async function getTopKClasses(logits, topK) {
   const values = await logits.data();
+  console.log(values)
 
   const valuesAndIndices = [];
   for (let i = 0; i < values.length; i++) {
